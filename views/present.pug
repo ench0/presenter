@@ -1,0 +1,51 @@
+extends layout
+
+block column1
+    link(rel='stylesheet', href='/css/sss.css')
+    include inc/col1
+
+
+block column2
+    link(rel='stylesheet', href='/css/superslides.css')
+    include inc/col2
+
+block column3
+    include inc/col3
+
+block scripts
+    script(src='/timetable/js/refresh.js')
+    
+    script.
+        $(function() {$('#ticker').vTicker('init', {
+            speed: 500, 
+            pause: 10000,
+            showItems: 3,
+            padding:0})
+        });
+
+    script(src="/js/jquery.easing.1.3.js")
+    script(src="/js/jquery.animate-enhanced.min.js")
+    script(src="/js/jquery.superslides.min.js")
+    script(src="/js/sss.min.js")
+
+    script.
+        $(function() {
+            $('#slider').superslides({
+                inherit_width_from: '.wide-container',
+                inherit_height_from: '.wide-container',
+                play: 2500,
+                animation: 'fade'
+            });
+        });
+
+    script.
+        $('#mainslider').sss({
+            slideShow : true, 
+            speed : 30000,
+            showNav : false
+        });
+        //- slideShow : true, // Set to false to prevent SSS from automatically animating.
+        //- startOn : 0, // Slide to display first. Uses array notation (0 = first slide).
+        //- transition : 400, // Length (in milliseconds) of the fade transition.
+        //- speed : 3500, // Slideshow speed in milliseconds.
+        //- showNav : true // Set to false to hide navigation arrows.

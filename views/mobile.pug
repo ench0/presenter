@@ -1,0 +1,58 @@
+extends layout_timetable
+
+block content
+    //- TOP BAR
+    div.uk-section.uk-section-small.uk-section-secondary.uk-text-center.uk-padding-remove
+        div.uk-container.uk-text-center
+            h2.uk-text-uppercase=settings.title
+
+    //- TABLE
+    table.uk-height-viewport.uk-width-1.uk-table.uk-table-middle.uk-margin-remove.uk-table-small(uk-height-viewport="offset-top: true;offset-bottom: true;" style="background:"+settings.themecol+" url(\""+settings.themeimg+"\") 50%;")
+        tr.uk-card.uk-card-body.uk-text-center
+            td
+                h1(style="padding-top:0px;")#time.uk-heading-hero time
+        tr.uk-card.uk-card-body.uk-text-center
+            td#date date
+
+        //-         //- include inc/clock.pug
+
+        tr.uk-card.uk-card-body.uk-text-center
+            td(style="padding:0 30px!important;margin:0!important;")
+                table.uk-table.uk-table-divider.uk-table-middle
+                    thead
+                        tr
+                            th.uk-text-left= settings.prayerlabel
+                            th.uk-text-center= settings.adhanlabel
+                            th.uk-text-center= settings.iqamahlabel
+                            th.uk-text-right.arabic صلاة
+
+
+                    tbody.uk-text-uppercase.uk-text-center(style="background:rgba(255,255,255,.35);")
+                        - i = 0;
+                        - names = [[settings.names[0],'الفجر'], [settings.names[1], 'الشروق'], [settings.names[2], 'الظهر'], [settings.names[3], 'العصر'], [settings.names[4], 'المغرب'], [settings.names[5], 'العشاء']]
+                        each val in names
+                            tr(id="row-"+i)
+                                td.uk-text-left= val[0]
+                                td(id='prayer-time-'+i)
+                                td(id='jamaah-time-'+i)
+                                td.uk-text-right.arabic= val[1]
+                                - i++
+
+        tr.uk-card.uk-card-body.uk-text-center
+            td
+                div(style="padding-bottom:0px;")
+                    span#pending-name.uk-text-right(style="margin-right:10px;") Prayer
+                    span#timetoprayer.uk-text-left(style="margin-left:10px;") Countdown
+                                
+        //- tr
+
+
+    //- BOTTOM BAR
+    - if(((settings.jummuahtime).split(":"))[1] < 10) var jummuahtime = ((settings.jummuahtime).split(":"))[0] + ": 0" + ((settings.jummuahtime).split(":"))[1]; else var jummuahtime = settings.jummuahtime;
+
+    div.uk-section.uk-section-xsmall.uk-section-secondary.uk-text-center.uk-padding-remove
+        div.uk-container.uk-text-center
+            h2.uk-text-uppercase=settings.jummuahlabel + " " + jummuahtime
+                | 
+                span#ramadan
+

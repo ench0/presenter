@@ -1,0 +1,40 @@
+div
+
+    h3.uk-text-uppercase.uk-heading-divider NEWS
+            
+    div
+        for row in rows[1]
+
+
+            div.uk-card.uk-grid-collapse.uk-margin(uk-grid style="height:125px;")
+                div.uk-card-media-left.uk-cover-container.uk-width-1-4
+                    img(src="/icci/"+row.id+"/"+row.image title="" alt="" uk-cover)
+                    canvas(width="300" height="260")
+                div.uk-width-3-4
+                    article.uk-card-body.uk-padding-remove.uk-article(style="padding-left:15px!important;")
+                        h3.uk-card-title(style="font-size:70%;margin-bottom:10px;")=S(row.title).stripTags().truncate(70).s
+                        p.uk-text-small(style="margin:5px 0;")=S(row.body).stripTags().truncate(150).s
+                        div.uk-article-meta
+                            div(style="float:right;width:20%;text-align:right;")
+                                span= row.day + '/' + row.month + '/' + row.year
+                            div(style="float:left;width:80%;")
+                                span.uk-text-truncate(style="width:100%;display:inline-block;")= S('/news/' + row.name).truncate(70).s
+
+
+
+
+
+
+
+
+
+div
+    h3.uk-text-uppercase.uk-heading-divider ACTIVITIES
+
+    .wide-container.uk-inline
+        #slider
+            ul.slides-container
+                for row in rows[2]
+                    li(style="position:relative;")
+                        img(src="/icci/"+row.id+"/"+row.image title=S(row.title).stripTags().truncate(64).s)
+                        span.uk-text-truncate.uk-position-bottom.uk-text-small(style="width:100%;background:rgba(0,0,0,.5);text-align:center;color:#fff;")=row.title

@@ -1,0 +1,15 @@
+extends layout_timetable
+
+block content
+    include inc/timetable
+
+block scripts
+    script(src='/timetable/js/refresh.js')
+
+    script.
+        $(function() {$('#ticker').vTicker('init', {
+            speed: 500, 
+            pause: 10000,
+            showItems: 3,
+            padding:0})
+        });

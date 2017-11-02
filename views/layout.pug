@@ -1,0 +1,61 @@
+doctype html
+html(lang="nl")
+  head
+    title= title
+    link(rel='stylesheet', href='/timetable/css/normalize.css')
+    //- link(rel='stylesheet', href='/css/milligram.min.css')
+    link(rel='stylesheet', href='/timetable/css/uikit.min.css')
+    link(rel='stylesheet', href='/timetable/css/css3clock.css')
+    //- link(rel='stylesheet', href='/css/roboto.css')
+    link(rel='stylesheet', href='/timetable/css/open-sans.css')
+    //- link(rel='stylesheet', href='/css/open-sans-condensed.css')
+
+    link(rel='stylesheet', href='/timetable/css/changa.css')
+
+
+    link(rel='stylesheet', href='/css/style.css')
+    style(type="text/css").
+        body, .uk-table th {
+            font-family: "Open Sans",'Helvetica Neue',Arial,Helvetica,sans-serif;
+            font-size: 24px;
+        }
+        .uk-heading-hero {
+            font-size: 5rem;
+            font-weight: 500;
+        }
+        h2 {
+            font-size: 90%;
+        }
+
+    body(style="overflow: hidden;")
+
+        section#present.uk-section-secondary.uk-child-width-1-3.uk-grid-small.uk-grid-match.uk-height-viewport(uk-grid) 
+
+            div
+                div.uk-card.uk-card-primary.uk-card-body.uk-padding-small
+                    block column1
+
+            div
+                div.uk-card.uk-card-secondary.uk-card-body.uk-padding-small
+                    block column2
+
+            div
+                div.uk-card.uk-card-primary.uk-preserve-color.uk-card-body.uk-padding-remove
+                    block column3
+
+        script(src='/timetable/js/reload.js')
+
+        script(src='/timetable/js/moment.min.js')
+        script(src='/timetable/js/moment-timezone-with-data.js')
+        script(src='/timetable/js/moment-hijri.js')
+        script!= settingsdef
+        script!= timetabledef
+        //- script(src='/js/db/timetable.js')
+        script(src='/timetable/js/time.js')
+        script(src='/timetable/js/jquery.min.js')
+        script(src='/timetable/js/clock.js')
+        script(src='/timetable/js/jquery.vticker.min.js')
+        script(src='/timetable/js/uikit.min.js')
+        script(src='/timetable/js/uikit-icons.min.js')
+        
+        block scripts
