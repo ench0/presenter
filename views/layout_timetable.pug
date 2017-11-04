@@ -3,18 +3,18 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/timetable/css/normalize.css')
+    link(rel='stylesheet', href='/css/normalize.css')
     //- link(rel='stylesheet', href='/css/milligram.min.css')
-    link(rel='stylesheet', href='/timetable/css/uikit.min.css')
-    link(rel='stylesheet', href='/timetable/css/css3clock.css')
+    link(rel='stylesheet', href='/css/uikit.min.css')
+    link(rel='stylesheet', href='/css/css3clock.css')
     //- link(rel='stylesheet', href='/css/roboto.css')
-    link(rel='stylesheet', href='/timetable/css/open-sans.css')
+    link(rel='stylesheet', href='/css/open-sans.css')
     //- link(rel='stylesheet', href='/css/open-sans-condensed.css')
 
-    link(rel='stylesheet', href='/timetable/css/changa.css')
+    link(rel='stylesheet', href='/css/changa.css')
 
 
-    link(rel='stylesheet', href='/css/style.css')
+    link(rel='stylesheet', href='/cssext/style.css')
     style(type="text/css").
         body, .uk-table th {
             font-family: "Open Sans",'Helvetica Neue',Arial,Helvetica,sans-serif;
@@ -30,19 +30,19 @@ html
         block content
 
 
-    script(src='/timetable/js/reload.js')
+    script(src='/js/reload.js')
 
-    script(src='/timetable/js/moment.min.js')
-    script(src='/timetable/js/moment-timezone-with-data.js')
-    script(src='/timetable/js/moment-hijri.js')
+    script(src='/js/moment.min.js')
+    script(src='/js/moment-timezone-with-data.js')
+    script(src='/js/moment-hijri.js')
     script!= settingsdef
     script!= timetabledef
-    //- script(src='/js/db/timetable.js')
-    script(src='/timetable/js/time.js')
-    script(src='/timetable/js/jquery.min.js')
-    script(src='/timetable/js/clock.js')
-    script(src='/timetable/js/jquery.vticker.min.js')
-    script(src='/timetable/js/uikit.min.js')
-    script(src='/timetable/js/uikit-icons.min.js')
+    //- script(src='/js/db.js')
+    script(src='/js/time.js')
+    script(src='/js/jquery.min.js')
+    script(src='/js/clock.js')
+    script(src='/js/jquery.vticker.min.js')
+    script(src='/js/uikit.min.js')
+    script(src='/js/uikit-icons.min.js')
     
     block scripts

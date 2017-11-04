@@ -31,8 +31,12 @@ app.use(expressValidator() ); // Add this after the bodyParser middlewares!
 app.use(cookieParser());
 
 // static
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/timetable', express.static(__dirname + '/node_modules/prayer-timetable/public/'));
+// app.use(express.static(path.join(__dirname, 'public')));
+// app.use('/timetable', express.static(__dirname + '/node_modules/prayer-timetable/public/'));
+app.use(express.static(path.join(__dirname, 'node_modules/prayer-timetable/public')));
+app.use('/icci', express.static(path.join(__dirname, 'public/icci')));
+app.use('/jsext', express.static(path.join(__dirname, 'public/js')));
+app.use('/cssext', express.static(path.join(__dirname, 'public/css')));
 
 
 app.use('/', index);

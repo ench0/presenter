@@ -38,11 +38,19 @@ router.get('/timetable', function(req, res, next) {
   /* POST request for creating Genre. */
   router.post('/admin', auth.connect(basic), admin.admin_post);
   
-  router.get('/update', auth.connect(basic), update.github);
+
   
-  router.get('/reboot', auth.connect(basic), update.reboot);
-  
-  router.get('/view', admin.view);
+  // Password form
+router.get('/admin/password', auth.connect(basic), admin.pass_get);
+
+// password post
+router.post('/admin/password', auth.connect(basic), admin.pass_post);
+
+router.get('/update', auth.connect(basic), update.github);
+
+router.get('/reboot', auth.connect(basic), update.reboot);
+
+router.get('/view', admin.view);
 
 
 
