@@ -9,6 +9,9 @@ var app = require('../index');
 var debug = require('debug')('js-prayer-timetable:server');
 var http = require('http');
 var reload = require('reload');
+
+require('dotenv').config()
+
 // var watch = require('watch')
 
 /**
