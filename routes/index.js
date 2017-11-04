@@ -29,9 +29,7 @@ router.get('/', present.view);
 router.get('/timetable', function(req, res, next) {
     res.render('timetable', { title: 'Timetable', settings: settings, timetabledef: timetabledef, settingsdef: settingsdef });
   });
-  router.get('/mobile', function(req, res, next) {
-    res.render('mobile', { title: 'Timetable', settings: settings, timetabledef: timetabledef, settingsdef: settingsdef });
-  });
+
   
   
   /* GET request for creating a Genre. NOTE This must come before route that displays Genre (uses id) */
@@ -46,5 +44,22 @@ router.get('/timetable', function(req, res, next) {
   
   router.get('/view', admin.view);
 
+
+
+  // MOBILE ROUTES
+    router.get('/mobile', function(req, res, next) {
+    
+      if (req.cookies.mobset) var mobset = req.cookies.mobset
+      else mobset = ['', '', '', '', '', '']
+      res.render('mobile', { title: 'Timetable', settings: settings, mobset:mobset, timetabledef: timetabledef, settingsdef: settingsdef, body: req.body });
+      
+    });
+    
+    router.post('/mobile', function(req, res, next) {
+     
+      res.cookie('mobset', [req.body.analogue || '', req.body.jamaah || '', req.body.arabic || '', req.body.themecol || '', req.body.themeimg || '', 'cookies agree'], { maxAge: 31556952000, httpOnly: false })//.send('Cookie is set');
+      res.redirect('mobile')
+    
+    });
   
 module.exports = router;

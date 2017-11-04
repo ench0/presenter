@@ -48,7 +48,7 @@ block off-canvas
                 button.uk-button.uk-button-default.uk-margin(type='submit') Submit
 
                 if !mobset[5]
-                    div(uk-alert).uk-position-bottom(style="width:90%;background:rgba(0,0,0,.1);color:#ccc;")
+                    div.uk-position-bottom(style="width:90%;background:rgba(0,0,0,.1);color:#ccc;" uk-alert)
                         a.uk-alert-close(uk-close)
                         h2 Cookies
                         p.uk-text-small(style="font-size:80%;") In order to remember your settings above, we use cookies. No personal information is collected. By continuing to use this app and submitting the above, you agree to give us your consent to do so.
@@ -60,11 +60,6 @@ block content
         div.uk-container.uk-text-center
             h2.uk-text-uppercase=settings.title
                 a.uk-position-top-right(href='#offcanvas-usage', uk-toggle='' uk-icon="icon: menu;ratio: 2.6" style="padding:10px;")
-            //-     |  
-            //- span analogue/jamaah/arabic
-            //-     | 
-            //- span=mobset
-
 
 
     //- LAYOUT TABLE
@@ -143,35 +138,5 @@ block content
 
 block scripts
     if mobset[0]
-        script(src='/js/clock.js')
-    
-    //- script.
-    //-     $("#check").change(function () {
-    //-         if($(this).is(':checked')) { console.log("checked"); $(this).val('1');}
-    //-         else {console.log("unchecked"); $(this).val('0');}
-
-    //-         //- var value = $(this).val();
-    //-         var analogue = $("#analogue").val();
-    //-         var jamaah = $("#jamaah").val();
-    //-         var arabic = $("#arabic").val();
-    //-         console.log("analogue:",analogue,"jamaah:",jamaah,"arabic:",arabic)
-
-    //-         $.ajax({
-    //-             type: "POST",
-    //-             url: "/mobile",
-    //-             //- async: true,
-    //-             data: {
-    //-                 analogue: analogue,
-    //-                 jamaah: jamaah,
-    //-                 arabic: arabic
-    //-             },
-    //-             success: function (msg) {
-    //-                 //- alert('Success');
-    //-                 console.log("Posted successfully!")
-    //-                 //- if (msg != 'success') {
-    //-                 //-     alert('Fail');
-    //-                 //- }
-    //-             }
-    //-         });
-    //-     });
+        script(src='/timetable/js/clock.js')
 

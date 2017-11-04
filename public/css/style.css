@@ -12,20 +12,11 @@ h1, h2, h3, h4, h5 {
     font-family: "Changa",'Helvetica Neue',Arial,Helvetica,sans-serif;
     font-weight: 200;/*200 500*/
 }
-
-.uk-card-primary {
-    background-color: #d14804;
+h2 {
+  font-size: 80%;
+  padding: 10px;
 }
 
-.uk-article-title {
-    font-size: 1.6rem;
-    padding-top: .5rem;
-    line-height: 1.2;
-    margin:0;
-}
-p.uk-article-meta {
-    margin: 10px 0 ;
-}
 /*refresh*/
 #refresh {
     z-index: 9999;
@@ -195,3 +186,78 @@ p.uk-article-meta {
   output:after{
     content:" mins";
   }
+
+  .uk-form-label, .uk-button {
+    font-size: 100%;
+  }
+  .uk-checkbox, .uk-radio {
+    height: 32px;
+    width: 32px;
+  }
+  .uk-offcanvas-close svg {
+    height: 32px;
+    width: 32px;
+  }
+  .uk-offcanvas-bar .uk-button {
+    padding: 30px;
+  }
+  .uk-offcanvas-container .uk-offcanvas-content {
+    position: inherit;
+  }
+  @media (min-width: 960px)
+  {
+    .uk-offcanvas-bar {
+        width: 600px;
+        padding: 0 40px 40px;
+    }
+  }
+  .uk-select:not([multiple]):not([size]) {
+    height: inherit;
+  }
+  .uk-offcanvas-bar .uk-select:not([multiple]):not([size]) {
+    background-size: 25%;
+  }
+  /* .uk-table-small td, .uk-table-small th {
+    padding: 10px 40px!important;
+  } */
+  .uk-offcanvas-bar option {
+    height: 20px;
+    background: #333;
+    font-size: 50%;
+  }
+  .uk-offcanvas-bar option:hover {
+    height: 20px;
+    background: #999;
+  }
+  .uk-offcanvas-bar .uk-close {
+    color: rgba(255,255,255,1);
+  }
+  .uk-offcanvas-bar .uk-close svg {
+    height: 32px;
+    width: 32px;
+  }
+  .uk-table-divider>:first-child>tr:not(:first-child) {
+    border-top: 3px solid #fff;
+  }
+  .uk-table-divider>:first-child>tr:not(:first-child)::before {
+    border-top: 3px solid rgba(0,0,0,.25);
+    content: "";
+    width:100%;
+    position: absolute;
+  }
+
+
+/* presenter */
+.uk-card-primary {
+    background-color: #d14804;
+}
+
+.uk-article-title {
+    font-size: 1.6rem;
+    padding-top: .5rem;
+    line-height: 1.2;
+    margin:0;
+}
+p.uk-article-meta {
+    margin: 10px 0 ;
+}

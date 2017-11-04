@@ -1,10 +1,10 @@
 div#mainslider
     for row in rows[0]
         div
-            img(style="height: 800px" src="/icci/"+row.id+"/"+row.image title="")
+            img(style="height: 880px" src="/icci/"+row.id+"/"+row.image title="")
             article.uk-article
                 h1.uk-text-truncate.uk-article-title= S(row.title).stripTags().truncate(70).s
-                p.uk-article-meta= S(row.body).stripTags().truncate(210).s
+                p.uk-article-meta= S(row.body).stripTags().truncate(320).s
 
                 div.uk-article-meta
                     div(style="float:right;width:20%;text-align:right;")
