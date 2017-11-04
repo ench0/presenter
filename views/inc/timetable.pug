@@ -1,22 +1,27 @@
+
 div#refresh.uk-padding-remove.uk-margin-small
     div.fadein
     div#message-text.black
     div.fadeout
 
 //- TOP BAR
-div.uk-section.uk-section-small.uk-section-secondary.uk-text-center.uk-padding-remove
+div.uk-section.uk-section-small.uk-section-secondary.uk-text-center.uk-padding-remove.uk-position-top
     div.uk-container.uk-text-center
         h2.uk-text-uppercase=settings.title
 
 //- TABLE
-table.uk-height-viewport.uk-width-1.uk-table.uk-table-divider.uk-table-middle.uk-margin-remove.uk-table-small(uk-height-viewport="offset-top: true;offset-bottom: true;" style="background:"+settings.themecol+" url(\""+settings.themeimg+"\") 50%;margin:0!important;")
+table.uk-height-viewport.uk-width-1.uk-table.uk-table-divider.uk-table-middle.uk-margin-remove.uk-table-small(uk-height-viewport="offset-top: true;offset-bottom: true;" style="background:"+settings.themecol+" url(\""+settings.themeimg+"\") 50%;margin:40px 0!important;")
     tr.uk-card.uk-card-body.uk-text-center
         td
-            h1(style="padding-top:20px;")#time.uk-heading-hero time
-    tr.uk-card.uk-card-body.uk-text-center
-        td#date date
+            if settings.clock == "analogue"
+                include ./clock-analogue
+            else
+                include ./clock-digital
 
-    //-         //- include inc/clock.pug
+
+    tr.uk-card.uk-card-body.uk-text-center
+        td#date.uk-text-uppercase(style="font-size:90%;") date
+
 
     tr.uk-card.uk-card-body.uk-text-center
         td(style="padding:0 30px!important;margin:0!important;")
@@ -42,7 +47,7 @@ table.uk-height-viewport.uk-width-1.uk-table.uk-table-divider.uk-table-middle.uk
 
     tr.uk-card.uk-card-body.uk-text-center
         td
-            div
+            div.uk-text-uppercase
                 span#pending-name.uk-text-right(style="margin-right:10px;") Prayer
                 span#timetoprayer.uk-text-left(style="margin-left:10px;") Countdown
                             

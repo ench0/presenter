@@ -3,13 +3,25 @@ extends layout_timetable
 block content
     include inc/timetable
 
+    script.
+        var hidejamaah
+
 block scripts
     script(src='/timetable/js/refresh.js')
 
+    if settings.clock == "analogue"
+        script(src='/timetable/js/clock.js')
+
+    style(type="text/css").
+        #ticker ul {
+            list-style: none;
+            padding-left: 2em;
+            width: 100%;
+        }
     script.
         $(function() {$('#ticker').vTicker('init', {
             speed: 500, 
             pause: 10000,
             showItems: 3,
             padding:0})
-        });
+            });

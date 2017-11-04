@@ -1,30 +1,100 @@
-extends layout_timetable
+extends layout_mobile
+
+block off-canvas
+    #offcanvas-usage(uk-offcanvas='')
+        .uk-offcanvas-bar.uk-preserve-color
+            button.uk-offcanvas-close(type='button', uk-close='')
+            p Settings
+
+            form.uk-form-stacked(method='POST' action='')
+                div.uk-margin
+                    if mobset[0] 
+                        input.uk-checkbox.uk-margin-right(type="checkbox" name="analogue" checked title="Analogue")
+                        | Analogue Clock
+                    else
+                        input.uk-checkbox.uk-margin-right(type="checkbox" name="analogue" title="Analogue")
+                        | Analogue Clock
+                div.uk-margin
+                    if mobset[1] 
+                        input.uk-checkbox.uk-margin-right(type="checkbox" name="jamaah" checked title="Jamaah")
+                        | Jamaah
+                    else
+                        input.uk-checkbox.uk-margin-right(type="checkbox" name="jamaah" title="Jamaah")
+                        | Jamaah
+                div.uk-margin
+                    if mobset[2] 
+                        input.uk-checkbox.uk-margin-right(type="checkbox" name="arabic" checked title="Arabic")
+                        | Arabic
+                    else
+                        input.uk-checkbox.uk-margin-right(type="checkbox" name="arabic" title="Arabic")
+                        | Arabic
+
+                div.uk-margin
+                    label.uk-form-label(for='themecol') Theme:
+                    select.uk-select(class="uk-width-1-2@s" name='themecol') 
+                        each colour in [["#cee3ed", "blue"], ["#daeae4", "green"], ["#f9c998", "orange"], ["#ccc", "grey"], ["#fce0e0", "red"]]
+                            if colour[0] == mobset[3]
+                                option(selected='selected' value=colour[0])=colour[1]
+                            else
+                                option(value=colour[0])= colour[1]
+
+                    select.uk-select(class="uk-width-1-2@s" name='themeimg') 
+                        each img in [["/img/marble.png", "marble"], ["/img/morocco.png", "morocco"], ["/img/leaves.png", "leaves"], ["/img/dots.png", "dots"], ["/img/paper.png", "paper"]]
+                            if img[0] == mobset[4]
+                                option(selected='selected' value=img[0])=img[1]
+                            else
+                                option(value=img[0])= img[1]
+
+                button.uk-button.uk-button-default.uk-margin(type='submit') Submit
+
+                if !mobset[5]
+                    div(uk-alert).uk-position-bottom(style="width:90%;background:rgba(0,0,0,.1);color:#ccc;")
+                        a.uk-alert-close(uk-close)
+                        h2 Cookies
+                        p.uk-text-small(style="font-size:80%;") In order to remember your settings above, we use cookies. No personal information is collected. By continuing to use this app and submitting the above, you agree to give us your consent to do so.
+
 
 block content
     //- TOP BAR
     div.uk-section.uk-section-small.uk-section-secondary.uk-text-center.uk-padding-remove
         div.uk-container.uk-text-center
             h2.uk-text-uppercase=settings.title
+                a.uk-position-top-right(href='#offcanvas-usage', uk-toggle='' uk-icon="icon: menu;ratio: 2.6" style="padding:10px;")
+            //-     |  
+            //- span analogue/jamaah/arabic
+            //-     | 
+            //- span=mobset
 
-    //- TABLE
-    table.uk-height-viewport.uk-width-1.uk-table.uk-table-middle.uk-margin-remove.uk-table-small(uk-height-viewport="offset-top: true;offset-bottom: true;" style="background:"+settings.themecol+" url(\""+settings.themeimg+"\") 50%;")
+
+
+    //- LAYOUT TABLE
+    table.uk-height-viewport.uk-width-1.uk-table.uk-table-divider.uk-table-middle.uk-margin-remove.uk-table-small(uk-height-viewport="offset-top: true;offset-bottom: true;" style="background:"+mobset[3]+" url(\""+mobset[4]+"\") 50%;")
         tr.uk-card.uk-card-body.uk-text-center
             td
-                h1(style="padding-top:0px;")#time.uk-heading-hero time
-        tr.uk-card.uk-card-body.uk-text-center
-            td#date date
+                if mobset[0]
+                    include inc/clock-analogue
+                else
+                    include inc/clock-digital
 
-        //-         //- include inc/clock.pug
+        tr.uk-card.uk-card-body.uk-text-center
+            td#date.uk-text-uppercase(style="font-size:90%;") date
+
 
         tr.uk-card.uk-card-body.uk-text-center
             td(style="padding:0 30px!important;margin:0!important;")
-                table.uk-table.uk-table-divider.uk-table-middle
+                //- PRAYER TIMETABLE
+                table#ptt.uk-table.uk-table-divider.uk-table-middle.uk-padding
                     thead
                         tr
                             th.uk-text-left= settings.prayerlabel
-                            th.uk-text-center= settings.adhanlabel
-                            th.uk-text-center= settings.iqamahlabel
-                            th.uk-text-right.arabic صلاة
+                            if mobset[1]
+                                th.uk-text-center= settings.adhanlabel
+                            else
+                                th.uk-text-right= settings.adhanlabel
+                            if mobset[1]
+                                th.uk-text-center= settings.iqamahlabel
+                            if mobset[2]
+                                th.uk-text-right.arabic صلاة
 
 
                     tbody.uk-text-uppercase.uk-text-center(style="background:rgba(255,255,255,.35);")
@@ -33,14 +103,21 @@ block content
                         each val in names
                             tr(id="row-"+i)
                                 td.uk-text-left= val[0]
-                                td(id='prayer-time-'+i)
-                                td(id='jamaah-time-'+i)
-                                td.uk-text-right.arabic= val[1]
+                                if mobset[1]
+                                    td.uk-text-center(id='prayer-time-'+i)
+                                else
+                                    td.uk-text-right(id='prayer-time-'+i)
+                                if mobset[1]
+                                    td(id='jamaah-time-'+i)
+                                else
+                                    td.uk-invisible(id='jamaah-time-'+i hidden)
+                                if mobset[2]
+                                    td.uk-text-right.arabic= val[1]
                                 - i++
 
         tr.uk-card.uk-card-body.uk-text-center
             td
-                div(style="padding-bottom:0px;")
+                div.uk-text-uppercase
                     span#pending-name.uk-text-right(style="margin-right:10px;") Prayer
                     span#timetoprayer.uk-text-left(style="margin-left:10px;") Countdown
                                 
@@ -55,4 +132,46 @@ block content
             h2.uk-text-uppercase=settings.jummuahlabel + " " + jummuahtime
                 | 
                 span#ramadan
+
+
+    if !mobset[1]
+        script.
+            var hidejamaah = true
+    else
+        script.
+            var hidejamaah
+
+block scripts
+    if mobset[0]
+        script(src='/js/clock.js')
+    
+    //- script.
+    //-     $("#check").change(function () {
+    //-         if($(this).is(':checked')) { console.log("checked"); $(this).val('1');}
+    //-         else {console.log("unchecked"); $(this).val('0');}
+
+    //-         //- var value = $(this).val();
+    //-         var analogue = $("#analogue").val();
+    //-         var jamaah = $("#jamaah").val();
+    //-         var arabic = $("#arabic").val();
+    //-         console.log("analogue:",analogue,"jamaah:",jamaah,"arabic:",arabic)
+
+    //-         $.ajax({
+    //-             type: "POST",
+    //-             url: "/mobile",
+    //-             //- async: true,
+    //-             data: {
+    //-                 analogue: analogue,
+    //-                 jamaah: jamaah,
+    //-                 arabic: arabic
+    //-             },
+    //-             success: function (msg) {
+    //-                 //- alert('Success');
+    //-                 console.log("Posted successfully!")
+    //-                 //- if (msg != 'success') {
+    //-                 //-     alert('Fail');
+    //-                 //- }
+    //-             }
+    //-         });
+    //-     });
 

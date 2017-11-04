@@ -89,7 +89,7 @@ block content
 
                     div.uk-margin
                         label.uk-form-label(for='title') Title:
-                        input.uk-input(type='text', placeholder='Organisation title' name='title' value=(undefined===body.title ? settings.title : body.title) ) 
+                        input.uk-input(type='text', placeholder='Organisation title' name='title' value=(undefined===body.title ? settings.title : body.title) )
 
                     div.uk-margin
                         label.uk-form-label(for='body') Text body:
@@ -247,6 +247,17 @@ block content
                                 else
                                     option(value=img[0])= img[1]
 
+                    div.uk-margin
+                        label.uk-form-label(for='clock') Clock:
+                        select.uk-select(class="uk-width-1-4@s" name='clock') 
+                            each choice in [["digital", "Digital"], ["analogue", "Analogue"]]
+                                if choice[0] == body.clock
+                                    option(selected='selected' value=choice[0])=choice[1]
+                                if choice[0] == settings.clock
+                                    option(selected='selected' value=choice[0])=choice[1]
+                                else
+                                    option(value=choice[0])= choice[1]
+
 
                 div.uk-section.uk-section-xsmall
                     button.uk-button.uk-button-primary(type='submit') Submit
@@ -258,3 +269,5 @@ block content
             a.item(href="/update") Update
             span &nbsp; &middot; &nbsp;
             a.item(href="/reboot") Reboot
+            span &nbsp; &middot; &nbsp;
+            a.item(href="/admin/password") Change password
