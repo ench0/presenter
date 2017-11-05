@@ -20,7 +20,7 @@ var basic = auth.basic({
 });
 
 
-router.get('/', present.view);
+router.get('/present', present.view);
 
 // router.get('/', function(req, res, next) {
 //     res.render('present', { title: 'Present', settings: settings, timetabledef: timetabledef, settingsdef: settingsdef });
@@ -54,20 +54,21 @@ router.get('/view', admin.view);
 
 
 
-  // MOBILE ROUTES
-    router.get('/mobile', function(req, res, next) {
+// MOBILE ROUTES
+router.get('/', function(req, res, next) {
     
       if (req.cookies.mobset) var mobset = req.cookies.mobset
-      else mobset = ['', '', '', '', '', '']
+      else mobset = ['', '', '', '#ccc', '/img/paper.png', '']
       res.render('mobile', { title: 'Timetable', settings: settings, mobset:mobset, timetabledef: timetabledef, settingsdef: settingsdef, body: req.body });
       
-    });
+});
     
-    router.post('/mobile', function(req, res, next) {
-     
-      res.cookie('mobset', [req.body.analogue || '', req.body.jamaah || '', req.body.arabic || '', req.body.themecol || '', req.body.themeimg || '', 'cookies agree'], { maxAge: 31556952000, httpOnly: false })//.send('Cookie is set');
-      res.redirect('mobile')
+router.post('/', function(req, res, next) {
     
-    });
+    res.cookie('mobset', [req.body.analogue || '', req.body.jamaah || '', req.body.arabic || '', req.body.themecol || '#ccc', req.body.themeimg || '/img/paper.png', 'cookies agree'], { maxAge: 31556952000, httpOnly: false })//.send('Cookie is set');
+    res.redirect('/')
+
+});
+
   
 module.exports = router;
