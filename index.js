@@ -37,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'node_modules/prayer-timetable/publi
 app.use('/icci', express.static(path.join(__dirname, 'public/icci')));
 app.use('/jsext', express.static(path.join(__dirname, 'public/js')));
 app.use('/cssext', express.static(path.join(__dirname, 'public/css')));
+app.use('/db', express.static(path.join(__dirname, 'public/db')));
 
 
 app.use('/', index);
