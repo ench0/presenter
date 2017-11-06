@@ -94,7 +94,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
  
   res.cookie('mobset', [req.body.analogue || '', req.body.jamaah || '', req.body.arabic || '', req.body.themecol || '#ccc', req.body.themeimg || '/img/paper.png', 'cookies agree'], { maxAge: 31556952000, httpOnly: false })//.send('Cookie is set');
-  res.redirect('/mobile')
+  res.redirect('/')
 
 });
 
