@@ -1,0 +1,9 @@
+
+    {
+      "apps" : [{
+        "name"        : "presenter",
+        "script"      : "bin/www",
+        "watch"       : "./public/db",
+        "log_date_format"  : "YYYY-MM-DD HH:mm Z"
+      }]
+    }
