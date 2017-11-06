@@ -1,8 +1,8 @@
 
-    {
-      "apps" : [{
+{
+    "apps" : [{
         "name"        : "presenter",
-        "script"      : "nodemon ./bin/www -e js,css,pug,json",
+        "script"      : "bin/www",
         "log_date_format"  : "YYYY-MM-DD HH:mm Z"
-      }]
-    }
+    }]
+}
