@@ -8,7 +8,6 @@
 var app = require('../index');
 var debug = require('debug')('js-prayer-timetable:server');
 var http = require('http');
-var reload = require('reload');
 
 require('dotenv').config()
 
@@ -26,17 +25,6 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
-
-
-
-// Reload code here
-reload(server, app);
-// reloadServer = reload(server, app);
-
-// watch.watchTree(__dirname + "/public", function (f, curr, prev) {
-//     // Fire server-side reload event
-//     reloadServer.reload();
-// });
 
 /**
  * Listen on provided port, on all network interfaces.
