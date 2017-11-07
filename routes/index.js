@@ -76,10 +76,11 @@ router.get('/present', present.view);
 
 
 router.get('/timetable', function(req, res, next) {
-    console.log("settings")
   res.render('timetable', { title: 'Timetable', settings: settings, timetabledef: timetabledef, settingsdef: settingsdef });
 });
-
+router.get('/simple', function(req, res, next) {
+  res.render('simple', { title: 'Timetable', settings: settings, timetabledef: timetabledef, settingsdef: settingsdef, time: true });
+});
 
 
 // MOBILE ROUTES
@@ -118,6 +119,7 @@ router.get('/update', auth.connect(basic), update.github);
 router.get('/reboot', auth.connect(basic), update.reboot);
 
 router.get('/view', admin.view);
+
 
 
 module.exports = router;
