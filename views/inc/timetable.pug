@@ -1,4 +1,3 @@
-
 div#refresh.uk-padding-remove.uk-margin-small
     div.fadein
     div#message-text.black
@@ -10,20 +9,23 @@ div.uk-section.uk-section-small.uk-section-secondary.uk-text-center.uk-padding-r
         h2.uk-text-uppercase=settings.title
 
 //- TABLE
-table.uk-height-viewport.uk-width-1.uk-table.uk-table-divider.uk-table-middle.uk-margin-remove.uk-table-small(uk-height-viewport="offset-top: true;offset-bottom: true;" style="background:"+settings.themecol+" url(\""+settings.themeimg+"\") 50%;margin:40px 0!important;")
-    tr.uk-card.uk-card-body.uk-text-center
+table.uk-height-viewport.uk-width-1.uk-table.uk-table-divider.uk-table-middle.uk-margin-remove.uk-table-small(uk-height-viewport="offset-top: true;offset-bottom: true;" style="background:"+settings.themecol+" url(\""+settings.themeimg+"\") 50%;margin:69px 0!important;")
+    tr.uk-card.uk-card-body.uk-text-center(style="background:"+settings.themecol+";opacity: 0.85;")
         td
             if settings.clock == "analogue"
-                include ./clock-analogue
+                include clock-analogue
             else
-                include ./clock-digital
+                include clock-digital
 
 
-    tr.uk-card.uk-card-body.uk-text-center
-        td#date.uk-text-uppercase(style="font-size:90%;") date
+    tr.uk-card.uk-card-body.uk-text-center(style="background:"+settings.themecol+";opacity: 0.85;")
+        //- date
+        td.uk-text-uppercase(style="font-size:90%;")
+            div#gregorian
+            div#hijri
 
 
-    tr.uk-card.uk-card-body.uk-text-center
+    tr.uk-card.uk-card-body.uk-text-center(style="background:"+settings.themecol+";opacity: 0.85;")
         td(style="padding:0 30px!important;margin:0!important;")
             table.uk-table.uk-table-divider.uk-table-middle
                 thead
@@ -34,7 +36,7 @@ table.uk-height-viewport.uk-width-1.uk-table.uk-table-divider.uk-table-middle.uk
                         th.uk-text-right.arabic صلاة
 
 
-                tbody.uk-text-uppercase.uk-text-center(style="background:rgba(255,255,255,.35);")
+                tbody.uk-text-uppercase.uk-text-center(style="background:rgba(255,255,255,.85);")
                     - i = 0;
                     - names = [[settings.names[0],'الفجر'], [settings.names[1], 'الشروق'], [settings.names[2], 'الظهر'], [settings.names[3], 'العصر'], [settings.names[4], 'المغرب'], [settings.names[5], 'العشاء']]
                     each val in names
@@ -45,16 +47,18 @@ table.uk-height-viewport.uk-width-1.uk-table.uk-table-divider.uk-table-middle.uk
                             td.uk-text-right.arabic= val[1]
                             - i++
 
-    tr.uk-card.uk-card-body.uk-text-center
+    tr.uk-card.uk-card-body.uk-text-center(style="background:"+settings.themecol+";opacity: 0.85;")
         td
             div.uk-text-uppercase
-                span#pending-name.uk-text-right(style="margin-right:10px;") Prayer
-                span#timetoprayer.uk-text-left(style="margin-left:10px;") Countdown
+                //- Prayer
+                span#pending-name.uk-text-right(style="margin-right:10px;") 
+                //- Countdown
+                span#timetoprayer.uk-text-left(style="margin-left:10px;") 
                             
     //- tr
 
 
-    tr.uk-card.uk-card-body.uk-text-center
+    tr.uk-card.uk-card-body.uk-text-center(style="background:"+settings.themecol+";opacity: 0.85;")
         - var bodytext = settings.body.split("\r\n");
         - var announcements = settings.announcement.split("\r\n");
 

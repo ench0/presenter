@@ -3,17 +3,14 @@ html
     head
         title= title
         link(rel='stylesheet', href='/css/normalize.css')
-        //- link(rel='stylesheet', href='/css/milligram.min.css')
         link(rel='stylesheet', href='/css/uikit.min.css')
-        link(rel='stylesheet', href='/css/css3clock.css')
-        //- link(rel='stylesheet', href='/css/roboto.css')
         link(rel='stylesheet', href='/css/open-sans.css')
-        //- link(rel='stylesheet', href='/css/open-sans-condensed.css')
 
         link(rel='stylesheet', href='/css/changa.css')
 
+        block head
 
-        link(rel='stylesheet', href='/cssext/style.css')
+        link(rel='stylesheet', href='/css/style.css')
         style(type="text/css").
             body, .uk-table th {
                 font-family: "Open Sans",'Helvetica Neue',Arial,Helvetica,sans-serif;
@@ -25,26 +22,20 @@ html
             }
 
 
-        //- FAVICON
-        link(rel='apple-touch-icon', sizes='57x57', href='/favicon/apple-icon-57x57.png')
-        link(rel='apple-touch-icon', sizes='60x60', href='/favicon/apple-icon-60x60.png')
-        link(rel='apple-touch-icon', sizes='72x72', href='/favicon/apple-icon-72x72.png')
-        link(rel='apple-touch-icon', sizes='76x76', href='/favicon/apple-icon-76x76.png')
-        link(rel='apple-touch-icon', sizes='114x114', href='/favicon/apple-icon-114x114.png')
-        link(rel='apple-touch-icon', sizes='120x120', href='/favicon/apple-icon-120x120.png')
-        link(rel='apple-touch-icon', sizes='144x144', href='/favicon/apple-icon-144x144.png')
-        link(rel='apple-touch-icon', sizes='152x152', href='/favicon/apple-icon-152x152.png')
-        link(rel='apple-touch-icon', sizes='180x180', href='/favicon/apple-icon-180x180.png')
-        link(rel='icon', type='image/png', sizes='192x192', href='/favicon/android-icon-192x192.png')
-        link(rel='icon', type='image/png', sizes='32x32', href='/favicon/favicon-32x32.png')
-        link(rel='icon', type='image/png', sizes='96x96', href='/favicon/favicon-96x96.png')
-        link(rel='icon', type='image/png', sizes='16x16', href='/favicon/favicon-16x16.png')
-        link(rel='manifest', href='/favicon/manifest.json')
-        meta(name='msapplication-TileColor', content='#ffffff')
-        meta(name='msapplication-TileImage', content='/favicon/ms-icon-144x144.png')
-        meta(name='theme-color', content='#ffffff')
+        script(src='/js/reload.js' async)
 
+        script(src='/js/moment.min.js')
+        script(src='/js/moment-timezone-with-data.js')
+        script(src='/js/moment-hijri.js')
+        script!= settingsdef
+        script!= timetabledef
+        //- script(src='/db/settings.js')
+        //- script(src='/db/city.js')
+        script(src='/js/time.js' async)
 
+        script(src='/js/jquery-3.2.1.min.js')
+        script(src='/js/uikit.min.js')
+        script(src='/js/uikit-icons.min.js')
 
 
     body#body(style="overflow: hidden;")
@@ -58,21 +49,6 @@ html
             //- The whole page content goes here
             block content
 
-
-    script(src='/js/reload.js' async)
-
-    script(src='/js/moment.min.js')
-    script(src='/js/moment-timezone-with-data.js')
-    script(src='/js/moment-hijri.js')
-    //- script!= settingsdef
-    //- script!= timetabledef
-    script(src='/db/settings.js')
-    script(src='/db/city.js')
-    script(src='/js/time.js' async)
-
-    script(src='/js/jquery-3.2.1.min.js')
-    script(src='/js/uikit.min.js')
-    script(src='/js/uikit-icons.min.js')
     
     // Global site tag (gtag.js) - Google Analytics
     script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-73320827-2')
