@@ -67,3 +67,5 @@ Thumbs.db
 
 public/icci
 public/db
+package.json
+package-lock.json
