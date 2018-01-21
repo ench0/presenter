@@ -24,6 +24,6 @@
     "node": ">= 7"
   },
   "devDependencies": {
-    "cross-env": "^5.0.5"
+    "cross-env": "^5.1.3"
   }
 }
