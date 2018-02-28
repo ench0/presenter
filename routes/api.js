@@ -12,7 +12,8 @@ router.get('/timetable', function(req, res, next) {
 
 router.get('/', function(req, res, next) {
     res.setHeader('Content-Type', 'application/json');
-    res.json({name: "ICCI Timetable", paths: ["timetable", "timetable/M", "timetable/M/D", "settings"]});
+    // res.json({name: "ICCI Timetable", paths: ["timetable", "timetable/M", "timetable/M/D", "settings"]});
+    res.json({name: "ICCI Timetable", settings, timetable});
 })
 
 router.get('/settings', function(req, res, next) {
