@@ -14,7 +14,7 @@
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "mysql": "^2.15.0",
-    "prayer-timetable": "^0.4.2"
+    "prayer-timetable": "^0.4.3"
   },
   "repository": {
     "type": "git",
